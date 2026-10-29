@@ -1,0 +1,5 @@
+const menu=document.querySelector('#menu'),nav=document.querySelector('#nav');
+menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open)});
+nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}});
+document.querySelectorAll('[data-interest]').forEach(link=>link.addEventListener('click',()=>{const value=link.dataset.interest,select=document.querySelector('#interest');if([...select.options].some(o=>o.value===value))select.value=value;else{select.value='Garment OEM manufacturing';const details=document.querySelector('#details');if(!details.value.trim())details.value='I would like to discuss '+value.toLowerCase()+'. '}}));
+document.querySelector('#project-form').addEventListener('submit',e=>{e.preventDefault();document.querySelector('#result').textContent='Preview complete. Nothing has been sent or stored. Use the current contact form below to send a real enquiry.'});
